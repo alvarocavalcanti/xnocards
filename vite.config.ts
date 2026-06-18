@@ -8,6 +8,9 @@ export default defineConfig({
     cors: {
       origin: "https://www.owlbear.rodeo",
     },
+    headers: {
+      "Access-Control-Allow-Private-Network": "true",
+    },
   },
   build: {
     rollupOptions: {
