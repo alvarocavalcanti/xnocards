@@ -17,3 +17,7 @@ export const analytics = {
     }
   },
 };
+
+export const ID = "com.alvarocavalcanti.xnocards";
+export const BROADCAST_CHANNEL = `${ID}/card`;
+

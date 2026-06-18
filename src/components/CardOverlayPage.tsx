@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import OBR from "@owlbear-rodeo/sdk";
-import { ID } from "../main";
+import { ID } from "../utils";
 import { CardSVG, CARD_CONFIG } from "./CardPanel";
 import type { CardType } from "./SPA";
 

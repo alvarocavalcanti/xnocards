@@ -2,7 +2,7 @@ import OBR from "@owlbear-rodeo/sdk";
 import { useEffect } from "react";
 import { useTheme } from "../hooks/useTheme";
 import CardPanel from "./CardPanel";
-import { BROADCAST_CHANNEL, ID } from "../main";
+import { BROADCAST_CHANNEL, ID } from "../utils";
 
 export type CardType = "X" | "N" | "O";
 

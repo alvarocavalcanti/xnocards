@@ -4,8 +4,9 @@ import "./index.css";
 import PluginGate from "./components/PluginGate";
 import Homepage from "./components/Homepage";
 
-export const ID = "com.alvarocavalcanti.xnocards";
-export const BROADCAST_CHANNEL = `${ID}/card`;
+import { ID, BROADCAST_CHANNEL } from "./utils";
+
+export { ID, BROADCAST_CHANNEL };
 
 const isPlugin = new URLSearchParams(window.location.search).has("obrref");
 

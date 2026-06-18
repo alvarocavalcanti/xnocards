@@ -1,7 +1,6 @@
 import { useState, useCallback } from "react";
 import OBR from "@owlbear-rodeo/sdk";
-import { BROADCAST_CHANNEL } from "../main";
-import { analytics } from "../utils";
+import { BROADCAST_CHANNEL, analytics } from "../utils";
 import type { CardType } from "./SPA";
 
 /* ============================================================
