@@ -15,7 +15,7 @@ OBR.onReady(() => {
 
     await OBR.modal.open({
       id: MODAL_ID,
-      url: `/overlay?card=${card}`,
+      url: `/overlay.html?card=${card}`,
       fullScreen: true,
       hideBackdrop: false,
     });
