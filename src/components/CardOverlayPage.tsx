@@ -63,9 +63,7 @@ export default function CardOverlayPage() {
           exiting ? "overlay-card-exit" : "overlay-card-enter overlay-card-pulse",
         ].join(" ")}
       >
-        <div style={{ filter: `drop-shadow(0 0 32px ${cfg.border}66)` }}>
-          <CardSVG type={card} size={220} />
-        </div>
+        <CardSVG type={card} size={220} />
 
         <div className="text-center">
           <p
