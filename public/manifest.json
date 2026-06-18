@@ -1,0 +1,16 @@
+{
+  "name": "X, N & O Cards",
+  "version": "2026-06-18",
+  "manifest_version": 1,
+  "icon": "/img/logo.png",
+  "author": "Alvaro Cavalcanti",
+  "homepage_url": "https://github.com/alvarocavalcanti/xnocards",
+  "description": "Anonymous TTRPG safety tools — X, N, and O Cards — for any group.",
+  "action": {
+    "title": "X, N & O Cards",
+    "icon": "/img/icon.svg",
+    "popover": "/",
+    "height": 260,
+    "width": 320
+  }
+}

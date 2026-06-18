@@ -1,0 +1,130 @@
+/* ============================================================
+   X, N & O Cards — Global Styles
+   Tailwind v4 + custom animations
+   ============================================================ */
+
+@import "tailwindcss";
+
+/* ---- Fonts ---- */
+:root {
+  font-family: "Inter", system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---- Dark mode base ---- */
+html {
+  background: transparent;
+  color-scheme: light dark;
+}
+
+html.dark body {
+  background: #1a1a2e;
+  color: #e2e8f0;
+}
+
+html:not(.dark) body {
+  background: #f8fafc;
+  color: #1e293b;
+}
+
+/* ---- Card panel animations ---- */
+@keyframes card-hover-glow-x {
+  0%, 100% { box-shadow: 0 0 12px 0px rgba(239, 68, 68, 0.4); }
+  50%       { box-shadow: 0 0 24px 6px rgba(239, 68, 68, 0.7); }
+}
+
+@keyframes card-hover-glow-n {
+  0%, 100% { box-shadow: 0 0 12px 0px rgba(245, 158, 11, 0.4); }
+  50%       { box-shadow: 0 0 24px 6px rgba(245, 158, 11, 0.7); }
+}
+
+@keyframes card-hover-glow-o {
+  0%, 100% { box-shadow: 0 0 12px 0px rgba(34, 197, 94, 0.4); }
+  50%       { box-shadow: 0 0 24px 6px rgba(34, 197, 94, 0.7); }
+}
+
+.card-btn-x:hover  { animation: card-hover-glow-x 1.5s ease-in-out infinite; }
+.card-btn-n:hover  { animation: card-hover-glow-n 1.5s ease-in-out infinite; }
+.card-btn-o:hover  { animation: card-hover-glow-o 1.5s ease-in-out infinite; }
+
+.card-btn-x:hover .card-letter,
+.card-btn-n:hover .card-letter,
+.card-btn-o:hover .card-letter {
+  filter: drop-shadow(0 0 8px currentColor);
+}
+
+/* ---- Sent flash ---- */
+@keyframes sent-flash {
+  0%   { opacity: 1; transform: scale(1); }
+  50%  { opacity: 0.6; transform: scale(1.08); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.sent-flash {
+  animation: sent-flash 0.5s ease-out;
+}
+
+/* ---- Overlay entrance ---- */
+@keyframes overlay-backdrop-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes overlay-card-in {
+  0%   { opacity: 0; transform: translateY(-40px) scale(0.85); }
+  60%  { opacity: 1; transform: translateY(6px) scale(1.04); }
+  100% { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@keyframes overlay-card-out {
+  from { opacity: 1; transform: scale(1); }
+  to   { opacity: 0; transform: scale(0.9); }
+}
+
+@keyframes card-pulse {
+  0%, 100% { transform: scale(1); }
+  50%       { transform: scale(1.03); }
+}
+
+.overlay-backdrop {
+  animation: overlay-backdrop-in 0.3s ease-out forwards;
+}
+
+.overlay-card-enter {
+  animation: overlay-card-in 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.overlay-card-pulse {
+  animation: card-pulse 2.5s ease-in-out infinite;
+}
+
+.overlay-card-exit {
+  animation: overlay-card-out 0.4s ease-in forwards;
+}
+
+/* ---- Progress bar ---- */
+@keyframes progress-drain {
+  from { width: 100%; }
+  to   { width: 0%; }
+}
+
+.progress-drain {
+  animation: progress-drain linear forwards;
+}
+
+/* ---- Homepage ---- */
+.homepage-hero-gradient {
+  background: radial-gradient(ellipse at 20% 50%, rgba(239, 68, 68, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 80% 50%, rgba(34, 197, 94, 0.15) 0%, transparent 50%),
+              radial-gradient(ellipse at 50% 20%, rgba(245, 158, 11, 0.1) 0%, transparent 50%);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-8px); }
+}
+
+.float-x { animation: float 4s ease-in-out infinite; }
+.float-n { animation: float 4.5s ease-in-out infinite 0.5s; }
+.float-o { animation: float 5s ease-in-out infinite 1s; }
