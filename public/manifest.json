@@ -12,6 +12,5 @@
     "popover": "/",
     "height": 200,
     "width": 320
-  },
-  "background_url": "/background.html"
+  }
 }
