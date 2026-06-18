@@ -28,43 +28,6 @@ html:not(.dark) body {
   color: #1e293b;
 }
 
-/* ---- Card panel animations ---- */
-@keyframes card-hover-glow-x {
-  0%, 100% { box-shadow: 0 0 12px 0px rgba(239, 68, 68, 0.4); }
-  50%       { box-shadow: 0 0 24px 6px rgba(239, 68, 68, 0.7); }
-}
-
-@keyframes card-hover-glow-n {
-  0%, 100% { box-shadow: 0 0 12px 0px rgba(245, 158, 11, 0.4); }
-  50%       { box-shadow: 0 0 24px 6px rgba(245, 158, 11, 0.7); }
-}
-
-@keyframes card-hover-glow-o {
-  0%, 100% { box-shadow: 0 0 12px 0px rgba(34, 197, 94, 0.4); }
-  50%       { box-shadow: 0 0 24px 6px rgba(34, 197, 94, 0.7); }
-}
-
-.card-btn-x:hover  { animation: card-hover-glow-x 1.5s ease-in-out infinite; }
-.card-btn-n:hover  { animation: card-hover-glow-n 1.5s ease-in-out infinite; }
-.card-btn-o:hover  { animation: card-hover-glow-o 1.5s ease-in-out infinite; }
-
-.card-btn-x:hover .card-letter,
-.card-btn-n:hover .card-letter,
-.card-btn-o:hover .card-letter {
-  filter: drop-shadow(0 0 8px currentColor);
-}
-
-/* ---- Sent flash ---- */
-@keyframes sent-flash {
-  0%   { opacity: 1; transform: scale(1); }
-  50%  { opacity: 0.6; transform: scale(1.08); }
-  100% { opacity: 1; transform: scale(1); }
-}
-
-.sent-flash {
-  animation: sent-flash 0.5s ease-out;
-}
-
 /* ---- Overlay entrance ---- */
 @keyframes overlay-backdrop-in {
   from { opacity: 0; }

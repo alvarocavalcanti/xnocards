@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" width="100" height="100" fill="none" stroke="currentColor" stroke-width="6" stroke-linecap="round" stroke-linejoin="round">
+  <!-- X — top left quadrant -->
+  <line x1="12" y1="12" x2="28" y2="28" />
+  <line x1="28" y1="12" x2="12" y2="28" />
+  <!-- N — top right quadrant -->
+  <line x1="60" y1="28" x2="60" y2="12" />
+  <line x1="60" y1="12" x2="76" y2="28" />
+  <line x1="76" y1="28" x2="76" y2="12" />
+  <!-- O — bottom centre -->
+  <ellipse cx="50" cy="68" rx="14" ry="18" />
+</svg>

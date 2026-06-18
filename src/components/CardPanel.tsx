@@ -5,21 +5,19 @@ import { analytics } from "../utils";
 import type { CardType } from "./SPA";
 
 /* ============================================================
-   Playing-card SVG for X, N, O
+   Card colour config
    ============================================================ */
 
 interface CardConfig {
   letter: string;
   label: string;
   sublabel: string;
-  fill: string;
-  border: string;
-  textColor: string;
-  glowClass: string;
-  btnClass: string;
+  fill: string;       // card body background
+  border: string;     // border colour
+  textColor: string;  // letter + label colour
 }
 
-const CARD_CONFIG: Record<CardType, CardConfig> = {
+export const CARD_CONFIG: Record<CardType, CardConfig> = {
   X: {
     letter: "X",
     label: "Stop",
@@ -27,8 +25,6 @@ const CARD_CONFIG: Record<CardType, CardConfig> = {
     fill: "#1e0505",
     border: "#ef4444",
     textColor: "#fca5a5",
-    glowClass: "card-btn-x",
-    btnClass: "hover:border-red-500 focus:ring-red-500",
   },
   N: {
     letter: "N",
@@ -37,8 +33,6 @@ const CARD_CONFIG: Record<CardType, CardConfig> = {
     fill: "#1c1505",
     border: "#f59e0b",
     textColor: "#fcd34d",
-    glowClass: "card-btn-n",
-    btnClass: "hover:border-amber-500 focus:ring-amber-500",
   },
   O: {
     letter: "O",
@@ -47,12 +41,14 @@ const CARD_CONFIG: Record<CardType, CardConfig> = {
     fill: "#031a0a",
     border: "#22c55e",
     textColor: "#86efac",
-    glowClass: "card-btn-o",
-    btnClass: "hover:border-green-500 focus:ring-green-500",
   },
 };
 
-function CardSVG({ type, size = 80 }: { type: CardType; size?: number }) {
+/* ============================================================
+   Playing-card SVG
+   ============================================================ */
+
+export function CardSVG({ type, size = 80 }: { type: CardType; size?: number }) {
   const cfg = CARD_CONFIG[type];
   const w = size;
   const h = Math.round(size * 1.4);
@@ -71,86 +67,36 @@ function CardSVG({ type, size = 80 }: { type: CardType; size?: number }) {
       role="img"
     >
       {/* Card body */}
-      <rect
-        x="2"
-        y="2"
-        width={w - 4}
-        height={h - 4}
-        rx={r}
-        ry={r}
-        fill={cfg.fill}
-        stroke={cfg.border}
-        strokeWidth="2.5"
-      />
-      {/* Inner border glow */}
-      <rect
-        x="5"
-        y="5"
-        width={w - 10}
-        height={h - 10}
-        rx={r - 2}
-        ry={r - 2}
-        fill="none"
-        stroke={cfg.border}
-        strokeWidth="0.5"
-        opacity="0.3"
-      />
+      <rect x="2" y="2" width={w - 4} height={h - 4} rx={r} ry={r}
+            fill={cfg.fill} stroke={cfg.border} strokeWidth="2.5" />
 
-      {/* Corner pips — top-left */}
-      <text
-        x={pipOffset}
-        y={pipOffset + pipSize}
-        fontSize={pipSize}
-        fontFamily="'Cinzel', serif"
-        fontWeight="700"
-        fill={cfg.textColor}
-        opacity="0.75"
-      >
+      {/* Corner pip — top-left */}
+      <text x={pipOffset} y={pipOffset + pipSize}
+            fontSize={pipSize} fontFamily="'Cinzel', serif" fontWeight="700"
+            fill={cfg.textColor} opacity="0.75">
         {cfg.letter}
       </text>
 
-      {/* Corner pips — bottom-right (rotated) */}
-      <text
-        x={w - pipOffset}
-        y={h - pipOffset}
-        fontSize={pipSize}
-        fontFamily="'Cinzel', serif"
-        fontWeight="700"
-        fill={cfg.textColor}
-        opacity="0.75"
-        textAnchor="end"
-        dominantBaseline="auto"
-      >
+      {/* Corner pip — bottom-right */}
+      <text x={w - pipOffset} y={h - pipOffset}
+            fontSize={pipSize} fontFamily="'Cinzel', serif" fontWeight="700"
+            fill={cfg.textColor} opacity="0.75"
+            textAnchor="end" dominantBaseline="auto">
         {cfg.letter}
       </text>
 
       {/* Main letter */}
-      <text
-        x={w / 2}
-        y={h / 2 - 4}
-        fontSize={fontSize}
-        fontFamily="'Cinzel', serif"
-        fontWeight="700"
-        fill={cfg.textColor}
-        textAnchor="middle"
-        dominantBaseline="middle"
-        className="card-letter"
-      >
+      <text x={w / 2} y={h / 2 - 4}
+            fontSize={fontSize} fontFamily="'Cinzel', serif" fontWeight="700"
+            fill={cfg.textColor} textAnchor="middle" dominantBaseline="middle">
         {cfg.letter}
       </text>
 
       {/* Sub-label */}
-      <text
-        x={w / 2}
-        y={h * 0.78}
-        fontSize={Math.round(size * 0.1)}
-        fontFamily="'Inter', sans-serif"
-        fontWeight="500"
-        fill={cfg.textColor}
-        textAnchor="middle"
-        opacity="0.8"
-        letterSpacing="0.5"
-      >
+      <text x={w / 2} y={h * 0.78}
+            fontSize={Math.round(size * 0.1)} fontFamily="'Inter', sans-serif"
+            fontWeight="500" fill={cfg.textColor} textAnchor="middle"
+            opacity="0.8" letterSpacing="0.5">
         {cfg.label.toUpperCase()}
       </text>
     </svg>
@@ -195,15 +141,12 @@ export default function CardPanel() {
               key={card}
               id={`xnocards-btn-${card.toLowerCase()}`}
               onClick={() => handleCardClick(card)}
-              className={[
-                "relative cursor-pointer rounded-lg border-2 p-1 transition-all duration-200",
-                "focus:outline-none focus:ring-2 focus:ring-offset-1",
-                "active:scale-95",
-                cfg.glowClass,
-                cfg.btnClass,
-                "dark:border-gray-700 border-gray-300",
-                isSent ? "sent-flash scale-110" : "hover:scale-105",
-              ].join(" ")}
+              className="relative cursor-pointer rounded-lg transition-all duration-150 active:scale-95 focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-white/30"
+              style={{
+                border: `2px solid ${cfg.border}`,
+                opacity: isSent ? 0.6 : 1,
+                transform: isSent ? "scale(1.05)" : undefined,
+              }}
               title={`${card} Card — ${cfg.label}`}
               aria-label={`Play ${card} Card: ${cfg.label}`}
             >
@@ -211,7 +154,7 @@ export default function CardPanel() {
               {isSent && (
                 <div
                   className="absolute inset-0 rounded-lg flex items-center justify-center"
-                  style={{ background: "rgba(0,0,0,0.55)" }}
+                  style={{ background: "rgba(0,0,0,0.6)" }}
                 >
                   <span className="text-white text-xs font-semibold tracking-widest uppercase">
                     Sent!
@@ -225,12 +168,10 @@ export default function CardPanel() {
 
       {/* Legend */}
       <div className="mt-3 grid grid-cols-3 gap-1 text-center">
-        <span className="text-xs text-red-400">Stop / Rewind</span>
-        <span className="text-xs text-amber-400">Slow down</span>
-        <span className="text-xs text-green-400">Check in</span>
+        <span className="text-xs" style={{ color: "#ef4444" }}>Stop / Rewind</span>
+        <span className="text-xs" style={{ color: "#f59e0b" }}>Slow down</span>
+        <span className="text-xs" style={{ color: "#22c55e" }}>Check in</span>
       </div>
     </div>
   );
 }
-
-export { CardSVG, CARD_CONFIG };

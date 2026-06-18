@@ -8,9 +8,12 @@
   "description": "Anonymous TTRPG safety tools — X, N, and O Cards — for any group.",
   "action": {
     "title": "X, N & O Cards",
-    "icon": "/img/icon.svg",
+    "icon": "/img/menu-icon.svg",
     "popover": "/",
-    "height": 260,
+    "height": 200,
     "width": 320
+  },
+  "background": {
+    "url": "/background"
   }
 }
