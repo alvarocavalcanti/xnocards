@@ -111,10 +111,17 @@ export default function CardPanel() {
   const [sent, setSent] = useState<CardType | null>(null);
 
   const handleCardClick = useCallback(async (card: CardType) => {
+    console.log("XNOCards: Card clicked:", card);
     analytics.track("card_played", { card });
-    await OBR.broadcast.sendMessage(BROADCAST_CHANNEL, card, {
-      destination: "ALL",
-    });
+    console.log("XNOCards: Sending broadcast to channel:", BROADCAST_CHANNEL);
+    try {
+      await OBR.broadcast.sendMessage(BROADCAST_CHANNEL, card, {
+        destination: "ALL",
+      });
+      console.log("XNOCards: Broadcast send message completed successfully.");
+    } catch (err) {
+      console.error("XNOCards: Broadcast send message failed:", err);
+    }
     setSent(card);
     setTimeout(() => setSent(null), 1500);
   }, []);
