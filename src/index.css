@@ -12,7 +12,14 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ---- Dark mode base ---- */
+/* ---- Reset & height bounds ---- */
+html, body, #app {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 html {
   background: transparent;
   color-scheme: light dark;
